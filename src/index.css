@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-light-bg: #FFFFFF;
+  --color-light-surface: #F5F5F5;
+  --color-light-card: #FFFFFF;
+  --color-light-border: #E5E5E5;
+  --color-light-text-primary: #111111;
+  --color-light-text-secondary: #555555;
+
+  --color-dark-bg: #000000;
+  --color-dark-surface: #111111;
+  --color-dark-card: #1A1A1A;
+  --color-dark-border: #2A2A2A;
+  --color-dark-text-primary: #FFFFFF;
+  --color-dark-text-secondary: #AAAAAA;
+
+  --shadow-light-card: 6px 6px 12px #e0e0e0, -6px -6px 12px #ffffff;
+  --shadow-light-pressed: inset 4px 4px 8px #e0e0e0, inset -4px -4px 8px #ffffff;
+
+  --shadow-dark-card: 4px 4px 10px rgba(0, 0, 0, 0.6), -2px -2px 6px rgba(255, 255, 255, 0.05);
+  --shadow-dark-pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.8), inset -4px -4px 8px rgba(255, 255, 255, 0.02);
+}
+
+@theme {
+  --color-light-bg: var(--color-light-bg);
+  --color-light-surface: var(--color-light-surface);
+  --color-light-card: var(--color-light-card);
+  --color-light-border: var(--color-light-border);
+  --color-light-text-primary: var(--color-light-text-primary);
+  --color-light-text-secondary: var(--color-light-text-secondary);
+
+  --color-dark-bg: var(--color-dark-bg);
+  --color-dark-surface: var(--color-dark-surface);
+  --color-dark-card: var(--color-dark-card);
+  --color-dark-border: var(--color-dark-border);
+  --color-dark-text-primary: var(--color-dark-text-primary);
+  --color-dark-text-secondary: var(--color-dark-text-secondary);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-light-bg);
+    color: var(--color-light-text-primary);
+    transition: background-color 300ms, color 300ms;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .dark body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-dark-text-primary);
+  }
+}
+
+@layer components {
+  .neu-card {
+    background-color: var(--color-light-card);
+    border-radius: 1rem;
+    border: 1px solid var(--color-light-border);
+    transition: all 300ms;
+    box-shadow: var(--shadow-light-card);
+  }
+
+  .dark .neu-card {
+    background-color: var(--color-dark-card);
+    border-color: var(--color-dark-border);
+    box-shadow: var(--shadow-dark-card);
+  }
+
+  .neu-button {
+    background-color: var(--color-light-surface);
+    border-radius: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms;
+    border: 1px solid var(--color-light-border);
+    box-shadow: var(--shadow-light-card);
+  }
+
+  .neu-button:active {
+    box-shadow: var(--shadow-light-pressed);
+    transform: scale(0.97);
+  }
+
+  .dark .neu-button {
+    background-color: var(--color-dark-surface);
+    border-color: var(--color-dark-border);
+    box-shadow: var(--shadow-dark-card);
+  }
+
+  .dark .neu-button:active {
+    box-shadow: var(--shadow-dark-pressed);
+    transform: scale(0.97);
+  }
+
+  .neu-input {
+    width: 100%;
+    background-color: var(--color-light-surface);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-light-border);
+    outline: none;
+    transition: all 300ms;
+    box-shadow: inset 2px 2px 5px #e0e0e0, inset -3px -3px 7px #ffffff;
+  }
+
+  .neu-input:focus {
+    border-color: var(--color-light-text-secondary);
+  }
+
+  .dark .neu-input {
+    background-color: var(--color-dark-surface);
+    border-color: var(--color-dark-border);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.8), inset -2px -2px 5px rgba(255, 255, 255, 0.02);
+  }
+
+  .dark .neu-input:focus {
+    border-color: var(--color-dark-text-secondary);
+  }
+}
+
+.fab-center {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}
